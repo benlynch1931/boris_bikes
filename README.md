@@ -10,3 +10,5 @@ ruby ./lib/docking_station.rb
 1. Create a docking instance
 2. Release a bike and create bike instances
 3. See if the bike(instance) is working.
+4. Exception raised if no bikes available
+5. Check bike availability
