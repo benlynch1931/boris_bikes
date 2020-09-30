@@ -10,10 +10,12 @@ describe DockingStation do
     expect(subject).to respond_to :release_bike
   end
   # it { is_expected.to respond_to :release_bike }
-  it "will release a bike instance" do
-    subject = DockingStation.new
-    expect(subject.release_bike).to eq Bike.new
-  end
+
+
+  # it "will release a bike instance" do
+  #   subject = DockingStation.new
+  #   expect(subject.release_bike).to eq Bike.new
+  # end
 
   # TEST ABOUT DOCKING A BIKE
 
@@ -37,4 +39,17 @@ describe DockingStation do
   it "will respond_to bike" do
     expect(subject).to respond_to(:bike)
   end
+
+  # TEST ABOUT BIKES IN THE STATION
+
+  it 'will respond_to .availabe' do
+    expect(subject).to respond_to(:available)
+  end
+
+  describe '#release_bike' do
+    it 'will raise an exception if no bikes available' do
+      expect { subject.release_bike }.to raise_error("No bikes available")
+    end
+  end
+
 end
