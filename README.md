@@ -6,9 +6,14 @@ This code will enable you to emulate the needs and wants of the Boris Bike syste
 ruby ./lib/docking_station.rb
 ```
 
-### FEATURES:
+## FEATURES:
 1. Create a docking instance
 2. Release a bike and create bike instances
 3. See if the bike(instance) is working.
 4. Exception raised if no bikes available
 5. Check bike availability
+
+## Contributors:
+- **Tuesday** : Tim Castillo-Gill
+- **Wednesday** : Maggie Hibberd
+- **Thursday** : Beca Galliano
