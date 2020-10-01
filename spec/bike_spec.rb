@@ -1,4 +1,4 @@
-require 'docking_station'
+require 'bikes'
 
 describe Bike do
   it 'bike instances to respond_to working?' do

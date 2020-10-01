@@ -1,11 +1,11 @@
-require 'bikes.rb'
+# require 'bikes.rb'
 
 class DockingStation
 
   attr_reader :bike
 
   def initialize
-    @bike_count = 0
+    @bike_array = []
   end
 
   def release_bike
@@ -14,14 +14,15 @@ class DockingStation
     # else
     #   Bike.new
     # end
-    fail "No bikes available" unless @bike
-    @bike
+    fail "Error: No bikes available" unless @bike_array.length >= 1
+    @bike_array.pop
   end
 
   def dock(bike)
     # Use an instance variable to store the bike
     # in the 'state' of this instance
-    @bike = bike
+    raise "Error: Docking station is full" if @bike_array.length == 20
+    @bike_array.push(bike)
   end
 
   def available
