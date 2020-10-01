@@ -3,6 +3,15 @@ require 'bikes'
 
 describe DockingStation do
 
+  it "sets capacity to user's input" do
+    docking_station = DockingStation.new(30)
+    expect(docking_station.capacity).to eq 30
+  end
+
+  it "sets capacity to default capacity when no user input" do
+    docking_station = DockingStation.new
+    expect(docking_station.capacity).to eq DockingStation::DEFAULT_CAPACITY
+  end
 
   # TEST ABOUT RELEASING A BIKE
 
@@ -12,44 +21,14 @@ describe DockingStation do
   # it { is_expected.to respond_to :release_bike }
 
 
-  # it "will release a bike instance" do
-  #   subject = DockingStation.new
-  #   expect(subject.release_bike).to eq Bike.new
-  # end
-
-  # TEST ABOUT DOCKING A BIKE
-
-  it "will respond_to dock_bike" do
-    expect(subject).to respond_to(:dock).with(1).argument
-  end
-
-  # it "docks a bike" do
-  #   bike = Bike.new
-  #   # We want to return the bike we dock
-  #   expect(subject.dock(bike)).to eq bike
-  # end
-
-  # it "returns docked bikes" do
-  #   bike = Bike.new
-  #   subject.dock(bike)
-  #   # Again, we need to return the bike we just docked
-  #   expect(subject.bike).to eq bike
-  # end
-
-  it "will respond_to bike" do
-    expect(subject).to respond_to(:bike)
-  end
 
   # TEST ABOUT BIKES IN THE STATION
 
-  it 'will respond_to .availabe' do
-    expect(subject).to respond_to(:available)
-  end
 
   describe '#release_bike' do
     it 'will raise an exception if no bikes available' do
-      9.times { subject.dock(Bike.new)}
-      9.times { subject.release_bike}
+      DockingStation::DEFAULT_CAPACITY.times { subject.dock(Bike.new)}
+      DockingStation::DEFAULT_CAPACITY.times { subject.release_bike}
       expect { subject.release_bike }.to raise_error("Error: No bikes available")
     end
   end
@@ -57,7 +36,7 @@ describe DockingStation do
   describe '#dock' do
     it 'will raise an exception if docking is full' do
       bike = Bike.new
-      20.times { subject.dock(bike) }
+      DockingStation::DEFAULT_CAPACITY.times { subject.dock(bike) }
       expect { subject.dock(bike)}.to raise_error("Error: Docking station is full")
     end
   end
