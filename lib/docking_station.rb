@@ -14,31 +14,29 @@ class DockingStation
   private
 
   def full?
-    if @bike_array.length >= 20
-      return true
-    else
-      return false
-    end
+    @bike_array.length >= @capacity ? true : false
   end
 
-  def empty?
-    if @bike_array.length == 0
-      return true
-    else
-      return false
-    end
+  def print_report_options
+    puts "Is this bike working?"
   end
+
+  def report_condition
+    print_report_options
+    # @user_input = gets.chomp.downcase
+    @user_input = "no"
+    @bike.set_condition if @user_input == 'no'
+  end
+
+  # def empty?
+  #   @bike_array.length <= 0 ? true : false
+  # end
 
 
   public
 
   def release_bike
-    # if @bike_count == 0
-    #   raise StandardError.new "No bikes available"
-    # else
-    #   Bike.new
-    # end
-    fail "Error: No bikes available" if self.empty?
+    fail "Error: No bikes available" if @bike_array.empty?
     @bike_array.pop
   end
 
@@ -46,6 +44,8 @@ class DockingStation
     # Use an instance variable to store the bike
     # in the 'state' of this instance
     raise "Error: Docking station is full" if self.full?
+    @bike = bike
+    report_condition
     @bike_array.push(bike)
   end
 

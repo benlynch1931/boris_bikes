@@ -8,7 +8,7 @@ describe DockingStation do
     expect(docking_station.capacity).to eq 30
   end
 
-  it "sets capacity to default capacity when no user input" do
+  it "sets capacity to DEFAULT_CAPACITY when no user input" do
     docking_station = DockingStation.new
     expect(docking_station.capacity).to eq DockingStation::DEFAULT_CAPACITY
   end
@@ -39,6 +39,34 @@ describe DockingStation do
       DockingStation::DEFAULT_CAPACITY.times { subject.dock(bike) }
       expect { subject.dock(bike)}.to raise_error("Error: Docking station is full")
     end
-  end
+
+    it 'set bike condition attribute to broken if reported broken' do
+      docking_station = DockingStation.new
+      bike = Bike.new
+
+
+      # before do
+      #   allow(docking_station).to receive(:gets).and_return("no")
+      # end
+      #
+      # specify do
+      docking_station.dock(bike)
+      expect(bike.condition).to eq 'broken'
+      # end
+    end
+
+    end
+
+
+  # describe '#report_condition' do
+  #
+  #   before do
+  #     allow(subject).to receive(:gets).and_return("yes")
+  #   end
+  #
+  #   specify do
+  #     expect(subject.dock(Bike.new)).to eq true
+  #   end
+  # end
 
 end

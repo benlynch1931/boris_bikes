@@ -5,7 +5,11 @@ describe Bike do
     expect(subject).to respond_to(:working?)
   end
 
-  it 'bike is working when .working? called' do
-    expect(subject.working?).to eq 'Working!'
+  # it 'bike is working when .working? called' do
+  #   expect(subject.working?).to eq 'Working'
+  # end
+
+  it 'bike"s condition sets to default value' do
+    expect(subject.condition).to eq 'working'
   end
 end
