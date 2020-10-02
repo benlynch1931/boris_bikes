@@ -21,10 +21,10 @@ class DockingStation
     puts "Is this bike working?"
   end
 
+
   def report_condition
     print_report_options
-    # @user_input = gets.chomp.downcase
-    @user_input = "no"
+    @user_input = gets.chomp
     @bike.set_condition if @user_input == 'no'
   end
 
@@ -37,7 +37,7 @@ class DockingStation
 
   def release_bike
     fail "Error: No bikes available" if @bike_array.empty?
-    @bike_array.pop
+    @bike_array
   end
 
   def dock(bike)
